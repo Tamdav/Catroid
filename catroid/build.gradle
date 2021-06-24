@@ -163,6 +163,11 @@ android {
         resValue "string", "FEATURE_PHIRO_PREFERENCES_ENABLED", "false"
         resValue "string", "SNACKBAR_HINTS_ENABLED", "false"
         resValue "string", "DEBUG_MODE", "false"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
     }
 
     lintOptions {

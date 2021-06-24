@@ -23,6 +23,7 @@
 
 package org.catrobat.catroid.ui.recyclerview.adapter;
 
+import android.content.Context;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
@@ -50,6 +51,8 @@ import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.IntDef;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 public class BrickAdapter extends BaseAdapter implements
 		BrickAdapterInterface,
@@ -127,13 +130,17 @@ public class BrickAdapter extends BaseAdapter implements
 		if (item instanceof UserDefinedReceiverBrick) {
 			brickViewContainer = ((ViewGroup) ((ViewGroup) itemView).getChildAt(1)).getChildAt(0);
 		}
-
-		Drawable background = brickViewContainer.getBackground();
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+			int id = brickViewContainer.getSourceLayoutResId();
+		}
+		Context context = brickViewContainer.getContext();
+		//Drawable drawable = AppCompatResources.getDrawable()
+		//Drawable background = DrawableCompat.wrap(brickViewContainer.getBackground());
 
 		if (item.isCommentedOut() || item instanceof EmptyEventBrick) {
-			colorAsCommentedOut(background);
+			//colorAsCommentedOut(background);
 		} else {
-			background.clearColorFilter();
+			//background.clearColorFilter();
 		}
 
 		item.getCheckBox().setOnClickListener(view -> onCheckBoxClick(position));

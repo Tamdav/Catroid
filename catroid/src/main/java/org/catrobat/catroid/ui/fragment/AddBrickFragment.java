@@ -44,6 +44,7 @@ import java.util.List;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.ListFragment;
@@ -53,7 +54,9 @@ import static org.catrobat.catroid.ui.settingsfragments.AccessibilityProfile.BEG
 public class AddBrickFragment extends ListFragment {
 
 	public static final String ADD_BRICK_FRAGMENT_TAG = AddBrickFragment.class.getSimpleName();
-
+	static {
+		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+	}
 	private static final String BUNDLE_ARGUMENTS_SELECTED_CATEGORY = "selected_category";
 
 	private OnAddBrickListener addBrickListener;
